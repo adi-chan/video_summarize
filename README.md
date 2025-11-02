@@ -10,7 +10,7 @@ A simple Python project that downloads YouTube videos, extracts audio, and gener
 ## Setup
 
 # bash
-git clone https://github.com/ASingh0510/video_summarize.git
+git clone https://github.com/adi-chan/video_summarize.git
 
 cd video_summarize
 
