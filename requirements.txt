@@ -1,7 +1,7 @@
 # Core
 torch>=2.1.0
 transformers>=4.34.0
-whisper @ git+https://github.com/openai/whisper.git
+openai-whisper>=20231117
 
 # YouTube downloading
 yt-dlp>=2023.21.2
