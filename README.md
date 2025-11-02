@@ -14,19 +14,7 @@ git clone https://github.com/adi-chan/video_summarize.git
 
 cd video_summarize
 
-pip install -r requirements.txt
-
-python main.py
-
-Then download FFMPEG using:
-# macOS
-brew install ffmpeg
-
-# Ubuntu/Debian
-sudo apt install ffmpeg
-
-# Windows
-choco install ffmpeg
+# Now create a Environment to run the program
 
 ## Virtual Environment Setup
 
@@ -42,6 +30,25 @@ Windows : whisper-env\Scripts\activate
 Mac/Linux: source whisper-env/bin/activate
 
 Arch/Fish: source whisper-env/bin/activate.fish
+
+# After that install requirement files(broken atm)
+
+pip install -r requirements.txt (High chance it won't be working due to bugs)
+# If it doesn't work please use these commands
+1. pip install torch --index-url https://download.pytorch.org/whl/cpu
+2. pip install yt-dlp ffmpeg-python openai-whisper transformers numpy gpt4all
+
+
+# Then download FFMPEG in another terminal outside of the env so it downloads its all over the desktop using:
+
+# macOS
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+
+# Windows
+choco install ffmpeg
 
 
 # The tool works with chatgpt too for that you will need an api key, if you want to use offline models skip this part.
