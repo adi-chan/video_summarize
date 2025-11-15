@@ -35,10 +35,8 @@ Mac/Linux: source whisper-env/bin/activate
 
 Arch/Fish: source whisper-env/bin/activate.fish
 
-# After that install requirement files(broken atm)
+# After that install requirement 
 
-pip install -r requirements.txt (High chance it won't be working due to bugs)
-# If it doesn't work please use these commands
 1. pip install torch --index-url https://download.pytorch.org/whl/cpu
 2. pip install yt-dlp ffmpeg-python openai-whisper transformers numpy gpt4all
 
