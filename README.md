@@ -86,7 +86,7 @@ python main.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 python main.py "path/to/video.mp4" 
 
-License
+# License
 
 This project is licensed under the MIT License.
 
