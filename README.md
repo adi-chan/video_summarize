@@ -2,6 +2,10 @@
 
 A simple Python project that downloads YouTube videos, extracts audio, and generates a summary using OpenAI Whisper/Offline models.
 
+# Demo 
+
+https://github.com/user-attachments/assets/b190be11-d842-4eac-8f1e-8fc5cdd70999
+
 ## Features
 - Download videos from YouTube
 - Convert MP4/MP3 → WAV automatically
@@ -81,4 +85,8 @@ python main.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 # From a local file
 
 python main.py "path/to/video.mp4" 
+
+License
+
+This project is licensed under the MIT License.
 
