@@ -37,6 +37,9 @@ Arch/Fish: source whisper-env/bin/activate.fish
 
 # After that install requirement 
 
+Use: pip install -r requirements.txt
+
+# If faced with any errors, install them using these commands.
 1. pip install torch --index-url https://download.pytorch.org/whl/cpu
 2. pip install yt-dlp ffmpeg-python openai-whisper transformers numpy gpt4all
 
