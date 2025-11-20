@@ -1,16 +1,8 @@
-# Core
+--extra-index-url https://download.pytorch.org/whl/cpu
 torch
-transformers
-openai-whisper
-
-# YouTube downloading
 yt-dlp
-
-# Audio conversion
 ffmpeg-python
-
-# Optional: GPT4All (if you use offline GGML models)
-gpt4all
-
-# Utilities
+openai-whisper
+transformers
 numpy
+gpt4all
