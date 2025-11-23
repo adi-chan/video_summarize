@@ -30,7 +30,7 @@ Mac/Linux: source whisper-env/bin/activate
 
 Arch/Fish: source whisper-env/bin/activate.fish
 
-## After that install requirement 
+## 3. Install the requirement 
 
 pip install -r requirements.txt
 
