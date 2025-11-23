@@ -37,6 +37,7 @@ pip install -r requirements.txt
 ## If faced with any errors, install them using these commands.
 
 pip install torch --index-url https://download.pytorch.org/whl/cpu
+
 pip install yt-dlp ffmpeg-python openai-whisper transformers numpy gpt4all
 
 ## Then download FFMPEG in another terminal outside of the env so it downloads its all over the desktop using:
