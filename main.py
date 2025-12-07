@@ -1,5 +1,6 @@
 from video_utils import load_mp4, download_yt_vid, convert_to_wav
-from summarize import summarize_text
+from summarize import summarize_text as offline_summary
+from summarize_API import summarize_text as online_summary
 import os
 import sys
 import glob
@@ -58,10 +59,24 @@ def main():
 
     print(f"\nTranscription saved to {txt_path}")
 
-    # Summarize 
-    print("\nGenerating summary...")
-    summarize_text(txt_path)
+    print("Which model would you like to use:")
+    print("1. Offline (Free but not exactly good and is slower)")
+    print("2. OpenAI (ChatGPT)")
+    choice = input("Enter 1 or 2 to choose: ").strip()
 
+    if choice == "1":
+        # Summarize using offline LLM
+        print("\nGenerating summary using offline model...")
+        offline_summary(txt_path)
+    
+    elif choice == "2":
+        # Summarize using online/API key
+        api_key = input("Enter your OpenAI API key: ").strip()
+        print("\nGenerating summary using online model...")
+        online_summary(txt_path, api_key)
+    
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
 
 if __name__ == "__main__":
     main()
