@@ -13,7 +13,8 @@ https://github.com/user-attachments/assets/fb47f94e-1cd1-41e6-8c72-4603b749b91e
 
 ## Setup
 
-## Download FFMPEG using:
+# Download FFMPEG using:
+
 # macOS
 brew install ffmpeg
 
@@ -23,7 +24,7 @@ sudo apt install ffmpeg
 # Windows
 choco install ffmpeg
 
-# Clone the git
+## Clone the git
 
 git clone https://github.com/adi-chan/video_summarize.git
 
