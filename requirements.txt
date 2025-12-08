@@ -5,8 +5,4 @@ ffmpeg-python
 openai-whisper
 transformers
 numpy
-<<<<<<< HEAD
 gpt4all
-=======
-gpt4all
->>>>>>> 5332fcf (Add runtime OpenAI key support and summarize_API.py to enhance performance and increase maintenance capability)
