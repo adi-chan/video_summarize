@@ -105,5 +105,14 @@ def main():
                 else:
                     print("Invalid choice, retrying API key...\n")
 
+        # Summarize using online/API key
+        api_key = input("Enter your OpenAI API key: ").strip()
+        print("\nGenerating summary using online model...")
+        online_summary(txt_path, api_key)
+    
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+
+
 if __name__ == "__main__":
     main()

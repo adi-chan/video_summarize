@@ -51,7 +51,6 @@ sudo apt install ffmpeg
 ## Windows
 choco install ffmpeg
 
-
 # The tool works with chatgpt too for that you will need an api key, if you want to use offline models skip this part.
 
 1. https://platform.openai.com/api-keys

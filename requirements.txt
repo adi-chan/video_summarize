@@ -6,3 +6,5 @@ openai-whisper
 transformers
 numpy
 gpt4all
+openai
+
