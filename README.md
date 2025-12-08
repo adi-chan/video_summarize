@@ -51,26 +51,13 @@ sudo apt install ffmpeg
 ## Windows
 choco install ffmpeg
 
-
 # The tool works with chatgpt too for that you will need an api key, if you want to use offline models skip this part.
 
 1. https://platform.openai.com/api-keys
    
 2. Make an api key but never share it with anyone.
    
-3. Set it up while being in the whisper env.
-   
-## macOS/Linux
-
-export OPENAI_API_KEY="your_api_key_here"
-
-## Arch
-
-set -x set -x OPENAI_API_KEY "your_api_key_here"
-
-## Windows (PowerShell)
-
-setx OPENAI_API_KEY "your_api_key_here"
+3. Paste the API Key whenever you want to use ChatGPT.
 
 
 # Usage: While being in the whisper env run these commands
