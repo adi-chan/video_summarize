@@ -2,23 +2,18 @@
 
 A simple Python project that downloads YouTube videos, extracts audio, and generates a summary using OpenAI Whisper and text summarization.
 
+
+https://github.com/user-attachments/assets/fb47f94e-1cd1-41e6-8c72-4603b749b91e
+
+
 ## Features
-- Download videos from YouTube
+- Download videos from YouTube and local files
 - Convert MP4/MP3 → WAV automatically
 - Transcribe and summarize video content
 
 ## Setup
 
-# bash
-git clone https://github.com/adi-chan/video_summarize.git
-
-cd video_summarize
-
-pip install -r requirements.txt
-
-python main.py
-
-Then download FFMPEG using:
+## Download FFMPEG using:
 # macOS
 brew install ffmpeg
 
@@ -27,6 +22,12 @@ sudo apt install ffmpeg
 
 # Windows
 choco install ffmpeg
+
+# Clone the git
+
+git clone https://github.com/adi-chan/video_summarize.git
+
+cd video_summarize
 
 ## Virtual Environment Setup
 
@@ -43,27 +44,11 @@ Mac/Linux: source whisper-env/bin/activate
 
 Arch/Fish: source whisper-env/bin/activate.fish
 
+## Install the requirements
 
-# Since the tool works with chatgpt you will need an api key which is easy to make and free to use.
+pip install -r requirements.txt
 
-1. https://platform.openai.com/api-keys
-   
-2. Make an api key but never share it with anyone.
-   
-3. Set it up while being in the whisper env.
-   
-# macOS/Linux
-
-export OPENAI_API_KEY="your_api_key_here"
-
-# Arch
-
-set -x set -x OPENAI_API_KEY "your_api_key_here"
-
-# Windows (PowerShell)
-
-setx OPENAI_API_KEY "your_api_key_here"
-
+# With this you are done setting up the tool. If you want to use ChatGPT to find summaries, please generate an API key from https://platform.openai.com/api-keys and paste it everytime you want the tool to use ChatGPT
 
 ## Usage
 
