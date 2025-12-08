@@ -70,13 +70,40 @@ def main():
         offline_summary(txt_path)
     
     elif choice == "2":
-        # Summarize using online/API key
-        api_key = input("Enter your OpenAI API key: ").strip()
-        print("\nGenerating summary using online model...")
-        online_summary(txt_path, api_key)
-    
-    else:
-        print("Invalid choice. Please enter 1 or 2.")
+        while True:
+            api_key = input("Enter your OpenAI API key: ").strip()
+            print("\nGenerating summary using online model...")
+
+            try:
+                online_summary(txt_path, api_key)
+                print("Summary generated successfully.")
+                break  
+
+            except Exception as e:
+                print("\nInvalid API key or request failed.")
+                print("Reason:", e)
+
+                print("\nWhat would you like to do now?")
+                print("1. Switch to Offline Summary")
+                print("2. Try entering API key again")
+                print("3. Skip summary entirely")
+
+                retry_choice = input("Enter 1, 2, or 3: ").strip()
+
+                if retry_choice == "1":
+                    print("\nSwitching to offline summary...")
+                    offline_summary(txt_path)
+                    break
+
+                elif retry_choice == "2":
+                    continue  # retry API key
+
+                elif retry_choice == "3":
+                    print("Skipping summary.")
+                    break
+
+                else:
+                    print("Invalid choice, retrying API key...\n")
 
 if __name__ == "__main__":
     main()

@@ -27,6 +27,7 @@ def summarize_text(file_path, api_key):
 
     summary_text = response.choices[0].message.content.strip()
 
+    summary_file = os.path.join("data", os.path.splitext(os.path.basename(file_path))[0] + "_summary_online.txt")
     with open(summary_file, "w", encoding="utf-8") as f:
         f.write(summary_text)
 

@@ -58,19 +58,7 @@ choco install ffmpeg
    
 2. Make an api key but never share it with anyone.
    
-3. Set it up while being in the whisper env.
-   
-## macOS/Linux
-
-export OPENAI_API_KEY="your_api_key_here"
-
-## Arch
-
-set -x set -x OPENAI_API_KEY "your_api_key_here"
-
-## Windows (PowerShell)
-
-setx OPENAI_API_KEY "your_api_key_here"
+3. Paste the API Key whenever you want to use ChatGPT.
 
 
 # Usage: While being in the whisper env run these commands
