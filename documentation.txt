@@ -1,0 +1,93 @@
+VIDEO SUMMARIZER – DOCUMENTATION
+
+1. OVERVIEW
+
+This project is a command-line video summarizer that accepts a YouTube link or a local media file (.mp4 / .mp3), optionally trims a specific time segment, converts audio to WAV, transcribes speech to text, and generates a summary.
+
+The tool is designed to work offline-first (using Whisper) and can later be extended to online APIs.
+
+2. COMMAND LINE USAGE
+
+- python main.py <input> [--start mm:ss] [--end mm:ss]
+
+Examples:
+
+Summarize full YouTube video:
+
+python main.py https://youtube.com/watch?v=xxxx
+
+Summarize a specific segment:
+
+python main.py video.mp4 --start 0:10 --end 0:30
+
+Start time only (till end):
+
+python main.py audio.mp3 --start 45
+
+3. ARGUMENT DETAILS
+
+The optional arguments (--start and --end) are not mandatory.
+If the user wants to summarize the entire video, no additional arguments are required.
+
+Simply Use: 
+
+python main.py "URL/path_to_file"
+
+4. PERFORMANCE
+
+Use the ChatGPT API, which you can generate using:
+https://platform.openai.com/api-keys. 
+
+The summarization model can be modified inside summarize.py.
+Users may also configure the model to run on CPU or GPU, depending on system specifications.
+
+The default offline model used in this project was chosen based on hardware limitations.
+Users are free to replace it with other open-source or free models according to their system capability.
+
+5. System Architecture
+
++-------------------+
+|   User (CLI)      |
++---------+---------+
+          |
+          v
++-------------------+
+| Argument Parser   |
++---------+---------+
+          |
+          v
++-------------------+
+| Media Processor   |
+| (Download/Load)   |
++---------+---------+
+          |
+          v
++-------------------+
+| Audio Trimmer     |
+| (FFmpeg)          |
++---------+---------+
+          |
+          v
++-------------------+
+| Speech-to-Text    |
+| (Whisper)         |
++---------+---------+
+          |
+          v
++-------------------+
+| Text Summarizer   |
++---------+---------+
+          |
+          v
++-------------------+
+| Summary Output    |
++-------------------+
+
+6. FUTURE ENHANCEMENTS
+
+- Vector-based memory (RAG)
+
+- Speaker diarization
+
+- UI interface
+

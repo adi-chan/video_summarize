@@ -2,18 +2,15 @@ import yt_dlp # This is library which helps to download youtube videos.
 import os # Helps moving files and stuff.
 import subprocess 
 import whisper
-
+import os
 
 DATA_DIR = "data"
 os.makedirs(DATA_DIR, exist_ok=True)
 
-import os
-
 
 def time_to_seconds(t):
-    """
-    Converts mm:ss or ss to seconds.
-    """
+    # Converts mm:ss or ss to seconds.
+    
     if t is None:
         return None
 
