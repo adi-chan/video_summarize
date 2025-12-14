@@ -1,6 +1,7 @@
 # Video Summarizer
 
-A simple Python project that downloads videos from sites such as Youtube/Reddit and more, extracts audio, and generates a summary using OpenAI Whisper/Offline models. MOre details in documentation.txt, please check it out.
+A simple Python project that downloads videos from sites such as Youtube/Reddit and more, extracts audio, and generates a summary using OpenAI Whisper/Offline models. More details in documentation.txt, please check it out.
+
 # Demo 
 
 https://github.com/user-attachments/assets/b190be11-d842-4eac-8f1e-8fc5cdd70999
