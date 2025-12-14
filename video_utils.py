@@ -7,6 +7,39 @@ import whisper
 DATA_DIR = "data"
 os.makedirs(DATA_DIR, exist_ok=True)
 
+import os
+
+
+def time_to_seconds(t):
+    """
+    Converts mm:ss or ss to seconds.
+    """
+    if t is None:
+        return None
+
+    parts = t.split(":")
+    if len(parts) == 1:
+        return int(parts[0])
+    elif len(parts) == 2:
+        return int(parts[0]) * 60 + int(parts[1])
+    else:
+        raise ValueError("Invalid time format. Use mm:ss or ss")
+
+
+def trim_wav(input_wav, start_sec, end_sec):
+
+    output_wav = input_wav.replace(".wav", "_trimmed.wav")
+
+    cmd = ["ffmpeg", "-y", "-ss", str(start_sec), "-i", input_wav]
+
+    if end_sec is not None:
+        cmd += ["-to", str(end_sec)]
+
+    cmd += ["-c", "copy", output_wav]
+
+    subprocess.run(cmd, check=True)
+    return output_wav
+
 COOKIES_PATH = os.path.expanduser("~/cookies.txt")
 
 def download_yt_vid(url):
