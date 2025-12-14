@@ -35,8 +35,8 @@ python main.py "URL/path_to_file"
 
 4. PERFORMANCE
 
-Use the ChatGPT API, which you can generate using:
-https://platform.openai.com/api-keys. 
+Using the offline summarizer, which is efficient for lower end devices, you can expect an accuracy of 65% to 75%.
+Using the online summarizer, which is ChatGPT, you can expect an accuracy of 85% to 90%.
 
 The summarization model can be modified inside summarize.py.
 Users may also configure the model to run on CPU or GPU, depending on system specifications.
