@@ -1,0 +1,8 @@
+.git
+data/
+__pycache__/
+whisper-env
+*.pyc
+*.safetensors
+*.gguf
+*.bin
