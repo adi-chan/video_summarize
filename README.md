@@ -30,23 +30,23 @@ https://github.com/user-attachments/assets/b190be11-d842-4eac-8f1e-8fc5cdd70999
 
 ### Install Docker
 
-Arch Linux:
+#### Arch Linux:
 
-sudo pacman -S docker  
-sudo systemctl start docker  
-sudo systemctl enable docker  
-sudo usermod -aG docker $USER  
+1. sudo pacman -S docker  
+2. sudo systemctl start docker  
+3. sudo systemctl enable docker  
+4. sudo usermod -aG docker $USER  
 
-Log out and log back in, then verify:
+5. Log out and log back in, then verify:
 
-docker run hello-world
+6. docker run hello-world
 
-macOS / Windows:
+#### macOS / Windows:
 
-Download Docker Desktop from:  
+1. Download Docker Desktop from:  
 https://www.docker.com/products/docker-desktop/
 
-Verify installation:
+2. Verify installation:
 
 docker run hello-world
 
@@ -67,7 +67,7 @@ docker build -t video_summarize .
 
 ### Run
 
-From YouTube:
+#### From YouTube:
 
 docker run -it \
   -v ~/.cache/huggingface:/root/.cache/huggingface \
@@ -75,7 +75,7 @@ docker run -it \
   video_summarize \
   python main.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
-From local file:
+#### From local file:
 
 docker run -it \
   -v ~/.cache/huggingface:/root/.cache/huggingface \
@@ -91,18 +91,18 @@ Models download once and are cached locally.
 
 Recommended Python version: 3.10–3.12
 
-Create virtual environment:
+### Create virtual environment:
 
 python -m venv whisper-env  
 source whisper-env/bin/activate  
 
-Install dependencies:
+### Install dependencies:
 
-CPU only:
+#### CPU only:
 
 pip install torch --index-url https://download.pytorch.org/whl/cpu  
 
-NVIDIA GPU:
+#### NVIDIA GPU:
 
 pip install torch  
 
@@ -110,7 +110,7 @@ Then:
 
 pip install yt-dlp ffmpeg-python openai-whisper transformers numpy gpt4all  
 
-Install ffmpeg:
+#### Install ffmpeg:
 
 macOS:
 brew install ffmpeg  
