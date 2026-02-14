@@ -8,6 +8,10 @@ Supports offline models and optional OpenAI API integration.
 
 ## Demo
 
+### Docker
+https://github.com/user-attachments/assets/68517926-ee34-4a89-8d48-b829e11ff7ba
+
+### Python
 https://github.com/user-attachments/assets/b190be11-d842-4eac-8f1e-8fc5cdd70999
 
 ---
