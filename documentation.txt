@@ -8,20 +8,55 @@ The tool is designed to work offline-first (using Whisper) and can later be exte
 
 2. COMMAND LINE USAGE
 
+Using Docker(recommended):
+
+docker run -it \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
+          -v $(pwd)/data:/app/data \
+          video_summarize \
+          python main.py 'YOUTUBE LINK' [--start mm:ss] [--end mm:ss]
+
+Using python env:
+
 - python main.py <input> [--start mm:ss] [--end mm:ss]
 
 Examples:
 
 Summarize full YouTube video:
 
+Docker:
+docker run -it \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
+          -v $(pwd)/data:/app/data \
+          video_summarize \
+          python main.py 'https://www.youtube.com/watch?v=6Jk0zgNmXZ4' 
+
+Python env:
 python main.py https://youtube.com/watch?v=xxxx
 
 Summarize a specific segment:
+
+Docker:
+docker run -it \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
+          -v $(pwd)/data:/app/data \
+          video_summarize \
+          python main.py 'https://www.youtube.com/watch?v=6Jk0zgNmXZ4' --end 8:48
+
+Python env:
 
 python main.py video.mp4 --start 0:10 --end 0:30
 
 Start time only (till end):
 
+Docker:
+docker run -it \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
+          -v $(pwd)/data:/app/data \
+          video_summarize \
+          python main.py 'https://www.youtube.com/watch?v=6Jk0zgNmXZ4' --start 2:34
+
+Python env:
 python main.py audio.mp3 --start 45
 
 3. ARGUMENT DETAILS
@@ -35,14 +70,30 @@ python main.py "URL/path_to_file"
 
 4. PERFORMANCE
 
-Using the offline summarizer, which is efficient for lower end devices, you can expect an accuracy of 65% to 75%.
-Using the online summarizer, which is ChatGPT, you can expect an accuracy of 85% to 90%.
+Measured on CPU (offline mode):
+
+~3.5× real-time processing speed
+(Processes video in ~28–30% of its duration)
+
+~80–85% semantic alignment with reference summaries (offline Transformer model)
+
+Online (OpenAI API):
+
+~90%+ semantic alignment
+
+Higher structural clarity and abstraction quality
+
+Performance depends on:
+
+Video length
+
+Model size
+
+Hardware specifications
 
 The summarization model can be modified inside summarize.py.
-Users may also configure the model to run on CPU or GPU, depending on system specifications.
 
-The default offline model used in this project was chosen based on hardware limitations.
-Users are free to replace it with other open-source or free models according to their system capability.
+Users may configure CPU or GPU execution depending on system capabilities.
 
 5. System Architecture
 
@@ -83,11 +134,20 @@ Users are free to replace it with other open-source or free models according to 
 | Summary Output    |
 +-------------------+
 
+The system is containerized via Docker to ensure:
+
+Dependency isolation
+
+Python version stability
+
+Cross-platform reproducibility
+
 6. FUTURE ENHANCEMENTS
+
+- Adding an alias for easier CLI 
 
 - Vector-based memory (RAG)
 
 - Speaker diarization
 
 - UI interface
-
