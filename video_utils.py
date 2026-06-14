@@ -27,7 +27,7 @@ def trim_wav(input_wav, start_sec, end_sec):
 
     output_wav = input_wav.replace(".wav", "_trimmed.wav")
 
-    cmd = ["ffmpeg", "-y", "-ss", str(start_sec), "-i", input_wav]
+    cmd = ["ffmpeg", "-y", "-loglevel", "warning", "-ss", str(start_sec), "-i", input_wav]
 
     if end_sec is not None:
         cmd += ["-to", str(end_sec)]
@@ -37,26 +37,31 @@ def trim_wav(input_wav, start_sec, end_sec):
     subprocess.run(cmd, check=True)
     return output_wav
 
+
 COOKIES_PATH = os.path.expanduser("~/cookies.txt")
 
 def download_yt_vid(url):
     ydl_opts = {
         'outtmpl': os.path.join(DATA_DIR, '%(title)s.%(ext)s'),  # Save in data/ folder
-        'format': 'bestaudio/best',                              # Pick best video/audio. You can change add bestvideo+bestaudio/best and add 'merge_output_format': 'mp4', below do make sure to remove postprocessors
+        'format': 'bestaudio/best',                              # Pick best video/audio.
         'postprocessors': [{                                     # Convert to mp3 after download
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
-            'preferredquality': '192',                           # Change to 128 for faster downloads.
+            'preferredquality': '192',
         }],                          
-        'noplaylist': True                                       # Ignore playlists can be set to false if u want to
+        'noplaylist': True,
+        'quiet': True,
+        'no_warnings': True
     }
 
     if os.path.exists(COOKIES_PATH):
         ydl_opts['cookiefile'] = COOKIES_PATH
-        print(f"Using cookies from: {COOKIES_PATH}")
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+        info_dict = ydl.extract_info(url, download=True)
+        filename = ydl.prepare_filename(info_dict)
+        base, _ = os.path.splitext(filename)
+        return base + ".mp3"
 
 def load_mp4(file_path):
     if os.path.exists(file_path) and (file_path.endswith(".mp4") or file_path.endswith(".mp3")):   
@@ -65,8 +70,10 @@ def load_mp4(file_path):
         import shutil
         shutil.copy(file_path, dest)
         print(f"Copied to {dest}")
+        return dest
     else:
         print("File not found or not an valid path!")
+        return None
 
 def convert_to_wav(video_path):
     if not os.path.exists(video_path): 
@@ -74,18 +81,17 @@ def convert_to_wav(video_path):
         return None
 
     Original = os.path.splitext(os.path.basename(video_path))[0] 
-    # basename gets the video path name and splittext removes .mp4/.mp3 from the end
     wav_path = os.path.join("data", f"{Original}.wav")
-    # this changes the file type from .mp4/.mp3 to .wav
 
-    # run ffmpeg command to extract audio
     command = [
         "ffmpeg",
+        "-y",
+        "-loglevel", "warning",
         "-i", video_path,    # input video
         "-vn",               # no video
         "-acodec", "pcm_s16le", # WAV format
-        "-ar", "44100",      # sample rate
-        "-ac", "2",          # stereo
+        "-ar", "16000",      # sample rate (Whisper native so its in sync)
+        "-ac", "1",          # mono (Whisper native)
         wav_path
     ]
 

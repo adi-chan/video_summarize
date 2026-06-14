@@ -13,4 +13,7 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 
-CMD ["python", "main.py"]
+EXPOSE 8501
+
+CMD ["streamlit", "run", "web.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.maxUploadSize=5120"]
+

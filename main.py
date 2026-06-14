@@ -5,6 +5,10 @@ import os
 import glob
 import whisper
 import argparse
+import warnings
+
+# Suppress UserWarnings (e.g. Whisper FP16 warning on CPU)
+warnings.filterwarnings("ignore", category=UserWarning)
 
 DATA_DIR = "data"
 
@@ -52,24 +56,20 @@ def main():
     # Handle YouTube or local file input
     if input_arg.startswith('https'):
         print("Detected YouTube link.")
-        download_yt_vid(input_arg)
+        media_file = download_yt_vid(input_arg)
     elif input_arg.endswith(('.mp4', '.mp3')):
         print("Detected local media file.")
-        load_mp4(input_arg)
+        media_file = load_mp4(input_arg)
     else:
         print("Invalid input. Please provide a YouTube link or media file.")
         return
 
-    # Find the latest media file in data/
-    media_files = glob.glob(os.path.join(DATA_DIR, "*.mp4")) + glob.glob(os.path.join(DATA_DIR, "*.mp3"))
-    if not media_files:
-        print(f"No media files found in {DATA_DIR}!")
+    if not media_file or not os.path.exists(media_file):
+        print("Error: Could not locate or download media file.")
         return
 
-    latest_media = max(media_files, key=os.path.getmtime)
-
     # Convert media to WAV
-    wav_file = convert_to_wav(latest_media)
+    wav_file = convert_to_wav(media_file)
     if args.start is not None or args.end is not None:
         print(f"Trimming audio from {start_sec}s to {end_sec if end_sec else 'end'}")
         wav_file = trim_wav(wav_file, start_sec, end_sec)

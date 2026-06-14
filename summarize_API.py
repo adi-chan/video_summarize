@@ -1,5 +1,5 @@
 # The below code was the previous summarizer which ran on openai api key its better but i am not very sure if its free or not. 
-# I used it for my usage was 0$ even with a lot  of testing so maybe i was on trail please look into it if you wanna use it. 
+# I used it for my usage was 0$ even with a lot of testing so maybe i was on trail please look into it if you wanna use it. 
 # The code runs well and summaries are better if you use this code.
 
 import os
