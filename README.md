@@ -71,23 +71,34 @@ docker build -t video_summarize .
 
 ### Run
 
-#### From YouTube:
+#### Streamlit Web Interface (Default):
 
+Run the container with port mapping and volume mounts to load the web interface:
+
+```bash
+docker run -p 8501:8501 \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
+  -v $(pwd)/data:/app/data \
+  video_summarize
+```
+
+Once started, open `http://localhost:8501` in your browser.
+
+---
+
+#### CLI Interface:
+
+To use the CLI interface instead, override the container's default command:
+
+```bash
 docker run -it \
   -v ~/.cache/huggingface:/root/.cache/huggingface \
   -v $(pwd)/data:/app/data \
   video_summarize \
   python main.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+```
 
-#### From local file:
-
-docker run -it \
-  -v ~/.cache/huggingface:/root/.cache/huggingface \
-  -v $(pwd)/data:/app/data \
-  video_summarize \
-  python main.py "path/to/video.mp4"
-
-Models download once and are cached locally.
+Models download once and are cached locally on your host machine.
 
 ---
 
